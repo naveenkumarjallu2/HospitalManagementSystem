@@ -1,0 +1,40 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<h2 align="center">AddPatient Details</h2>
+<form action="readdata" method="post">
+    {% csrf_token %}
+    <table align="center">
+        <tr>
+            <td style="color:green">Name:</td>
+            <td><input type="text" name="txtName"></td>
+        </tr>
+        <tr>
+            <td style="color:green">Age:</td>
+            <td><input type="number" name="txtAge"></td>
+        </tr>
+        <tr>
+            <td style="color:green">Phone number:</td>
+            <td><input type="number" name="txtPhone"></td>
+        </tr>
+        <tr>
+            <td style="color:green">City:</td>
+            <td><select name="ddlCity">
+                {% for i in City_Data %}
+                    <option>{{ i.City_Name }}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td style="color:green">Diseases:</td>
+            <td><select name="ddlDiseases">
+                {% for i in Diseases_Data %}
+                    <option>{{ i.Diseases_Name }}</option>
+                {% endfor %}
+            </select>
+            </td>
+        </tr>
+       <tr> <td> <input type="submit" name="btnSub" value="Add" style="background-color:aqua" ></td></tr>
+    </table>
+</form>
+
+{% endblock %}
