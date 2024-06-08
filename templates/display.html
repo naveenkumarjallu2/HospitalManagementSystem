@@ -1,0 +1,29 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<h2 align="center"><u> ***...Patient table...*** </u></h2>
+<table align="center" border="2" class="table">
+    <tr style="color:blue">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Diseases</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td style="color:maroon">{{ i.id }}</td>
+        <td style="color:green">{{ i.Patient_Name }}</td>
+        <td style="color:maroon">{{ i.Patient_Age }}</td>
+        <td style="color:green">{{ i.Patient_Phone }}</td>
+        <td style="color:maroon">{{ i.Patient_City }}</td>
+        <td style="color:green">{{ i.Patient_Diseases }}</td>
+        <td style="color:maroon"><a href="{% url 'update' i.id %}">Update</a></td>
+        <td style="color:green"><a href="{% url 'del' i.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

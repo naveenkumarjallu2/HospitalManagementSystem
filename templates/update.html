@@ -1,0 +1,41 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<h2 align="center"> Add Student Data </h2>
+<form method="post">
+    {% csrf_token %}
+    <table align="center">
+        <tr>
+            <td >Name:</td>
+            <td><input type="text" name="txtName" value="{{ data.Patient_Name }}"></td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td><input type="number" name="txtAge" value="{{ data.Patient_Age }}"></td>
+        </tr>
+        <tr>
+            <td>Phone number:</td>
+            <td><input type="number" name="txtPhone" value="{{ data.Patient_Phone }}"></td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td><select name="ddlCity">
+                <option selected> {{ data.Patient_City }}</option>
+                {% for i in City_Data %}
+                    <option>{{ i.City_Name }}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td>Diseases:</td>
+            <td><select name="ddlDiseases">
+                <option selected>{{ data.Patient_Diseases }}</option>
+               {% for i in Diseases_Data %}
+                    <option>{{ i.Diseases_Name }}</option>
+                {% endfor %}
+            </select>
+            </td>
+        </tr>
+       <tr> <td> <input type="submit" name="btnSub" value="UPDATE"></td></tr>
+    </table>
+</form>
+{% endblock %}
